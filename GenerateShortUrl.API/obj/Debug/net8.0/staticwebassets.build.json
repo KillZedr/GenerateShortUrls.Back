@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "y33iKnHuqWpxTDSUrMG19zwfHta1AZuxPNjKohr9zVc=",
+  "Source": "GenerateShortUrl.API",
+  "BasePath": "_content/GenerateShortUrl.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

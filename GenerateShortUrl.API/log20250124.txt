@@ -1,0 +1,16 @@
+2025-01-24 04:20:06.099 +03:00 [INF] Applying migrations...
+2025-01-24 04:20:08.128 +03:00 [INF] Migration(s) applied!
+2025-01-24 04:22:28.912 +03:00 [INF] Applying migrations...
+2025-01-24 04:22:30.423 +03:00 [INF] Migration(s) applied!
+2025-01-24 04:23:35.741 +03:00 [INF] Applying migrations...
+2025-01-24 04:23:37.077 +03:00 [ERR] Database.Migrate failed!
+2025-01-24 04:23:37.182 +03:00 [ERR] System.InvalidOperationException: An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'GenerateUrlShort_DbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal.NpgsqlMigrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at GenerateShortUrl.API.DbInitializer.ApplyMigrations(IServiceProvider serviceProvider) in C:\Users\Илья\Desktop\PetProgect\Marketplace\GenerateShortUrls\GenerateShortUrl.API\DbInitializer.cs:line 31
+2025-01-24 04:24:28.477 +03:00 [INF] Applying migrations...
+2025-01-24 04:24:30.357 +03:00 [INF] Migration(s) applied!

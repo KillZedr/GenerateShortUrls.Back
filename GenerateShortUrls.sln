@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateShortUrsl.Data", "GenerateShortUrsl.Data\GenerateShortUrsl.Data.csproj", "{F2265A3D-1AC0-491C-BA52-72DF75F71687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateShortUrl.API", "GenerateShortUrl.API\GenerateShortUrl.API.csproj", "{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2265A3D-1AC0-491C-BA52-72DF75F71687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2265A3D-1AC0-491C-BA52-72DF75F71687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2265A3D-1AC0-491C-BA52-72DF75F71687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2265A3D-1AC0-491C-BA52-72DF75F71687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD855024-40BF-434A-98AB-1AD9D325B4DA}
+	EndGlobalSection
+EndGlobal
