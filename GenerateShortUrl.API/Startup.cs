@@ -13,6 +13,7 @@ namespace GenerateShortUrl.API
         {
             AddSerilog(builder);
             RegisterDAL(builder.Services);
+            AddErrorLogging(builder);
         }
 
 
@@ -58,6 +59,27 @@ namespace GenerateShortUrl.API
 
             var logger = loggerConfig.CreateLogger();
             builder.Services.AddSingleton<ILogger>(logger);
+        }
+
+        internal static void AddErrorLogging(WebApplicationBuilder builder)
+        {
+            var errorLoggerConfig = new LoggerConfiguration()
+                .WriteTo.File("errors.txt", rollingInterval: RollingInterval.Day,
+                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+                .MinimumLevel.Error(); 
+
+          
+            if (builder.Environment.IsDevelopment())
+            {
+                errorLoggerConfig = errorLoggerConfig.MinimumLevel.Debug();
+            }
+            else
+            {
+                errorLoggerConfig = errorLoggerConfig.MinimumLevel.Error(); 
+            }
+
+            var errorLogger = errorLoggerConfig.CreateLogger();
+            builder.Services.AddSingleton<ILogger>(errorLogger);
         }
 
     }
