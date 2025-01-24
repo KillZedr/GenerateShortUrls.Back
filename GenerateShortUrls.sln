@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateShortUrsl.Data", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateShortUrl.API", "GenerateShortUrl.API\GenerateShortUrl.API.csproj", "{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateShortUrls.BLL", "GenerateShortUrls.BLL\GenerateShortUrls.BLL.csproj", "{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2004B96-80DE-4C8F-A086-05EE0AEFC90A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

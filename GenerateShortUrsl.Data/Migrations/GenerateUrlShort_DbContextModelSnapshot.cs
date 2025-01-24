@@ -48,7 +48,7 @@ namespace GenerateShortUrsl.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("GenerateShortUrsl.Data.Url.UrlMapping", b =>
@@ -78,7 +78,7 @@ namespace GenerateShortUrsl.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UrlMappings");
+                    b.ToTable("UrlMappings", (string)null);
                 });
 
             modelBuilder.Entity("GenerateShortUrsl.Data.Url.UrlMapping", b =>

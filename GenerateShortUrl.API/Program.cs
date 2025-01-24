@@ -1,4 +1,5 @@
 
+using GenerateShortUrls.BLL;
 using Microsoft.AspNetCore.Hosting;
 
 namespace GenerateShortUrl.API
@@ -16,6 +17,8 @@ namespace GenerateShortUrl.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             Startup.AddServices(builder);
+
+            ModuleHead.RegisterModule(builder.Services);
             var app = builder.Build();
             DbInitializer.InitializeDb(app.Services);
             // Configure the HTTP request pipeline.

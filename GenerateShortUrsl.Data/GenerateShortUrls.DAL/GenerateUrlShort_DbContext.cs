@@ -33,6 +33,9 @@ namespace GenerateShortUrsl.Data.GenerateShortUrls.DAL
                       .WithMany(u => u.UrlMappings)
                       .HasForeignKey(e => e.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
+
+
+              
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -40,6 +43,8 @@ namespace GenerateShortUrsl.Data.GenerateShortUrls.DAL
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.UserName).IsRequired();
                 entity.Property(e => e.Email).IsRequired();
+
+                
             });
         }
     }

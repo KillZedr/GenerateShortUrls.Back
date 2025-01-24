@@ -1,2 +1,20 @@
 2025-01-24 04:55:42.803 +03:00 [INF] Applying migrations...
 2025-01-24 04:55:44.399 +03:00 [INF] Migration(s) applied!
+2025-01-24 05:46:17.747 +03:00 [INF] Applying migrations...
+2025-01-24 05:46:20.389 +03:00 [INF] Migration(s) applied!
+2025-01-24 05:58:16.069 +03:00 [INF] Applying migrations...
+2025-01-24 05:58:17.752 +03:00 [INF] Migration(s) applied!
+2025-01-24 06:12:27.292 +03:00 [INF] Applying migrations...
+2025-01-24 06:12:28.768 +03:00 [INF] Migration(s) applied!
+2025-01-24 06:24:40.666 +03:00 [INF] Applying migrations...
+2025-01-24 06:24:42.297 +03:00 [ERR] Database.Migrate failed!
+2025-01-24 06:24:42.331 +03:00 [ERR] System.InvalidOperationException: An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'GenerateUrlShort_DbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal.NpgsqlMigrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at GenerateShortUrl.API.DbInitializer.ApplyMigrations(IServiceProvider serviceProvider) in C:\Users\Илья\Desktop\PetProgect\Marketplace\GenerateShortUrls\GenerateShortUrl.API\DbInitializer.cs:line 31
+2025-01-24 06:28:28.740 +03:00 [INF] Applying migrations...
+2025-01-24 06:28:30.058 +03:00 [INF] Migration(s) applied!
