@@ -1,11 +1,13 @@
 ﻿using GenerateShortUrls.BLL.Contracts;
 using GenerateShortUrls.BLL.DTOs;
 using GenerateShortUrsl.Data.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GenerateShortUrl.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -28,7 +30,7 @@ namespace GenerateShortUrl.API.Controllers
             try
             {
                 var user = await _userService.CreateUserAsync(createUserDto);
-                return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+                return CreatedAtAction(nameof(GetUserById), new { id = user.Identifier }, user);
             }
             catch (ArgumentException ex)
             {
@@ -36,13 +38,13 @@ namespace GenerateShortUrl.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error");
+                return BadRequest(new { message = "Bad request", details = ex.Message });
             }
         }
 
             // GET: api/User/5
             [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(int id)
+        public async Task<IActionResult> GetUserById(Guid id)
         {
             try
             {
@@ -136,7 +138,7 @@ namespace GenerateShortUrl.API.Controllers
 
         // DELETE: api/User/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(Guid id)
         {
             var result = await _userService.DeleteUserAsync(id);
             if (result == "User not found")

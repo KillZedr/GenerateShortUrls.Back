@@ -16,7 +16,7 @@ namespace GenerateShortUrsl.Data.GenerateShortUrls.DAL.Contracts
         TEntity Delete(TEntity entity);
 
         IQueryable<TEntity> AsQueryable();
-        Task<TEntity?> GetByIdAsync(int id);
+        Task<TEntity?> GetByIdAsync(Guid id);
 
         Task<int> SaveChangesAsync();
     }

@@ -11,11 +11,11 @@ namespace GenerateShortUrls.BLL.Contracts
     public interface IUserService : IService
     {
         Task<User> CreateUserAsync(CreateUserDto user);
-        Task<User> GetUserByIdAsync(int id);
+        Task<User> GetUserByIdAsync(Guid id);
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User> UpdateUserAsync(Guid userId, UpdateUserDto updateUserDto);
         Task<string> UpdatePasswordAsync(Guid userId, UpdatePasswordDto updatePasswordDto);
-        Task<string> DeleteUserAsync(int id);
+        Task<string> DeleteUserAsync(Guid id);
         Task<User> GetUserByEmailAsync(string email);
     }
 }

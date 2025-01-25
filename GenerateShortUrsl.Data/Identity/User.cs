@@ -7,15 +7,15 @@ using GenerateShortUrsl.Data.Url;
 
 namespace GenerateShortUrsl.Data.Identity
 {
-    public class User : Entity<int>
+    public class User : Entity<Guid>
     {
-        public Guid Id { get; set; }
         public string UserName { get; set; } = null!; 
         public string Email { get; set; } = null!;  
         public string PasswordHash { get; set; } = null!; 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string Token { get; set; }
 
-      
+
         public virtual ICollection<UrlMapping> UrlMappings { get; set; } = new List<UrlMapping>();
     }
 }

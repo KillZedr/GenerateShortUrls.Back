@@ -15,9 +15,11 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
     public class UserService : IUserService
     {
         private readonly IUrlRepository<User> _userRepository;
-        public UserService(IUrlRepository<User> userRepository)
+        private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        public UserService(IUrlRepository<User> userRepository, IJwtTokenGenerator jwtTokenGenerator)
         {
             _userRepository = userRepository;
+            _jwtTokenGenerator = jwtTokenGenerator;
         }
         public async Task<User> CreateUserAsync(CreateUserDto createUserDto)
         {
@@ -31,7 +33,6 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
                 throw new ArgumentException("Invalid email address");
             }
 
-           
             var existingUser = await _userRepository.AsQueryable()
                                                      .FirstOrDefaultAsync(u => u.Email == createUserDto.Email);
             if (existingUser != null)
@@ -39,26 +40,23 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
                 throw new ArgumentException("A user with this email already exists");
             }
 
-            
             var hashedPassword = BCrypt.Net.BCrypt.HashPassword(createUserDto.Password);
 
-           
             var user = new User
             {
-                Id = Guid.NewGuid(), 
                 UserName = createUserDto.UserName,
                 Email = createUserDto.Email,
                 PasswordHash = hashedPassword,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
             };
+            user.Token = _jwtTokenGenerator.GenerateToken(user);
 
-           
             _userRepository.Create(user);
             await _userRepository.SaveChangesAsync();
             return user;
         }
 
-        public async Task<string> DeleteUserAsync(int id)
+        public async Task<string> DeleteUserAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
@@ -92,7 +90,7 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
             return user;
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<User> GetUserByIdAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
@@ -104,7 +102,7 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
 
         public async Task<string> UpdatePasswordAsync(Guid userId, UpdatePasswordDto updatePasswordDto)
         {
-            var user = await _userRepository.AsQueryable().FirstOrDefaultAsync(uId => uId.Id == userId);
+            var user = await _userRepository.AsQueryable().FirstOrDefaultAsync(uId => uId.Identifier == userId);
             if (user == null)
             {
                 throw new KeyNotFoundException("User not found");
@@ -139,7 +137,7 @@ namespace GenerateShortUrls.BLL.RealizationServiceInterface
                 throw new ArgumentNullException(nameof(updateUserDto), "Update data cannot be null");
             }
          
-            var user = await _userRepository.AsQueryable().FirstOrDefaultAsync(uId => uId.Id == userId);
+            var user = await _userRepository.AsQueryable().FirstOrDefaultAsync(uId => uId.Identifier == userId);
             if (user == null)
             {
                 throw new KeyNotFoundException("User not found");

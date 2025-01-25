@@ -23,28 +23,44 @@ namespace GenerateShortUrsl.Data.GenerateShortUrls.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            
             modelBuilder.Entity<UrlMapping>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.ShortenedUrl).IsRequired();
-                entity.Property(e => e.OriginalUrl).IsRequired();
+                entity.HasKey(e => e.Identifier);
+
+                entity.Property(e => e.ShortenedUrl)
+                      .IsRequired()
+                      .HasMaxLength(50);
+
+                entity.Property(e => e.OriginalUrl)
+                      .IsRequired()
+                      .HasMaxLength(2048);
+
                 entity.HasOne(e => e.User)
                       .WithMany(u => u.UrlMappings)
                       .HasForeignKey(e => e.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
-
-
-              
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.UserName).IsRequired();
-                entity.Property(e => e.Email).IsRequired();
+                entity.HasKey(e => e.Identifier);
 
-                
+                entity.Property(e => e.UserName)
+                      .IsRequired()
+                      .HasMaxLength(30);
+
+                entity.Property(e => e.Email)
+                      .IsRequired()
+                      .HasMaxLength(100);
+
+                entity.Property(e => e.PasswordHash)
+                      .IsRequired();
+
+                entity.HasIndex(e => e.Email) 
+                      .IsUnique();
+
+                entity.Property(e => e.Token)
+                      .HasMaxLength(512); 
             });
         }
     }

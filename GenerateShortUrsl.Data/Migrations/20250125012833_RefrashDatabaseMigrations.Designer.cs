@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GenerateShortUrsl.Data.Migrations
 {
     [DbContext(typeof(GenerateUrlShort_DbContext))]
-    [Migration("20250124012158_AddFirstMigrations")]
-    partial class AddFirstMigrations
+    [Migration("20250125012833_RefrashDatabaseMigrations")]
+    partial class RefrashDatabaseMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,7 @@ namespace GenerateShortUrsl.Data.Migrations
 
             modelBuilder.Entity("GenerateShortUrsl.Data.Identity.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("Identifier")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -36,48 +36,54 @@ namespace GenerateShortUrsl.Data.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Identifier")
-                        .HasColumnType("integer");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Identifier");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GenerateShortUrsl.Data.Url.UrlMapping", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("Identifier")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("Identifier")
-                        .HasColumnType("integer");
-
                     b.Property<string>("OriginalUrl")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(2048)
+                        .HasColumnType("character varying(2048)");
 
                     b.Property<string>("ShortenedUrl")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+                    b.HasKey("Identifier");
 
                     b.HasIndex("UserId");
 

@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace GenerateShortUrsl.Data.Url
 {
-    public class UrlMapping : Entity<int>
+    public class UrlMapping : Entity<Guid>
     {
-        public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public virtual User User { get; set; }
         public string OriginalUrl { get; set; }
