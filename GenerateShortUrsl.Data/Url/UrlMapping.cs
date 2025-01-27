@@ -10,8 +10,8 @@ namespace GenerateShortUrsl.Data.Url
 {
     public class UrlMapping : Entity<Guid>
     {
-        public Guid UserId { get; set; }
-        public virtual User User { get; set; }
+        public Guid? UserId { get; set; }
+        public virtual User? User { get; set; }
         public string OriginalUrl { get; set; }
         public string ShortenedUrl { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

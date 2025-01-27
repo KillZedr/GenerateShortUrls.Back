@@ -3,6 +3,7 @@ using System;
 using GenerateShortUrsl.Data.GenerateShortUrls.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GenerateShortUrsl.Data.Migrations
 {
     [DbContext(typeof(GenerateUrlShort_DbContext))]
-    partial class GenerateUrlShort_DbContextModelSnapshot : ModelSnapshot
+    [Migration("20250126234515_FixUserIdMaybeNullMigrations")]
+    partial class FixUserIdMaybeNullMigrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
