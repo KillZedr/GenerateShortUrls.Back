@@ -15,7 +15,7 @@ ________________________________________
 ________________________________________
 Зависимости проекта
 Основные пакеты
-<ItemGroup>
+
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
@@ -30,9 +30,9 @@ ________________________________________
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-</ItemGroup>
+
 Пакеты для тестирования
-<ItemGroup>
+
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageReference Include="MockQueryable.Moq" Version="7.0.3" />
     <PackageReference Include="Moq" Version="4.20.72" />
@@ -46,7 +46,7 @@ ________________________________________
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-</ItemGroup>
+
 ________________________________________
 Инструкция по запуску проекта локально
 1. Установите необходимые инструменты
