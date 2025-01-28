@@ -1,0 +1,60 @@
+
+services:
+  generateshorturl.api:
+    image: ilia0801/generateshorturlapi:1.0
+    build:
+      context: .
+      dockerfile: GenerateShortUrl.API/Dockerfile
+    ports:
+      - "5001:5001" 
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: https://+:5001
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=UrlShortenerDb;Username=postgres;Password=KIDPay321
+      ASPNETCORE_Kestrel__Certificates__Default__Password: 12345
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetcore-dev.pfx
+    volumes:
+      - ./aspnetcore-dev.pfx:/https/aspnetcore-dev.pfx
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - shorturl_network
+
+  db:
+    image: postgres:latest
+    container_name: db-shorturl
+    environment:
+      POSTGRES_DB: UrlShortenerDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: KIDPay321
+    ports:
+      - "5433:5432"
+    volumes:
+      - urlshortenerdb_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - shorturl_network
+
+  pgweb:
+    image: sosedoff/pgweb:latest
+    container_name: pgweb-1
+    ports:
+      - "9091:8081"
+    environment:
+      PGWEB_DATABASE_URL: postgres://postgres:KIDPay321@db:5432/UrlShortenerDb?sslmode=disable
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - shorturl_network
+
+networks:
+  shorturl_network:
+
+volumes:
+  urlshortenerdb_data: 

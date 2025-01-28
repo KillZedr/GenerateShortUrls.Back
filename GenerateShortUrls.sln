@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateShortUrl.API", "Gen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateShortUrls.BLL", "GenerateShortUrls.BLL\GenerateShortUrls.BLL.csproj", "{C8CDDA8F-57FF-4642-B6B3-E9AEA6F1E73B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGenerateShortUrl", "TestGenerateShortUrl\TestGenerateShortUrl.csproj", "{A8A906BC-4741-4134-AB4D-7E4CB2412F1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGenerateShortUrl", "TestGenerateShortUrl\TestGenerateShortUrl.csproj", "{A8A906BC-4741-4134-AB4D-7E4CB2412F1B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BB2CF70B-B1CC-45BA-BD36-C95121D706E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A8A906BC-4741-4134-AB4D-7E4CB2412F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8A906BC-4741-4134-AB4D-7E4CB2412F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8A906BC-4741-4134-AB4D-7E4CB2412F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2CF70B-B1CC-45BA-BD36-C95121D706E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2CF70B-B1CC-45BA-BD36-C95121D706E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2CF70B-B1CC-45BA-BD36-C95121D706E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2CF70B-B1CC-45BA-BD36-C95121D706E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

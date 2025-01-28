@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace GenerateShortUrl.API
@@ -16,7 +17,13 @@ namespace GenerateShortUrl.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                options.ConfigureHttpsDefaults(httpsOptions =>
+                {
+                    httpsOptions.ServerCertificate = new X509Certificate2("/https/aspnetcore-dev.pfx", "12345");
+                });
+            });
             // Add services to the container.
 
             builder.Services.AddControllers();
