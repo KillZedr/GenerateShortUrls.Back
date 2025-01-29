@@ -46,10 +46,10 @@ namespace GenerateShortUrl.API.Controllers
             var result = await _userAuthorization.RegisterAsync(createUserDto);
             if (result.StartsWith("You are already registered"))
             {
-                return Ok(result); 
+                return Ok(new { message = result }); 
             }
 
-            return Ok(result); 
+            return Ok(new { message = result }); 
         }
     }
 }
