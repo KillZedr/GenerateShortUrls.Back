@@ -20,12 +20,12 @@ namespace GenerateShortUrl.API
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
+                options.AddPolicy("AllowFrontend",
                     policy =>
                     {
-                        policy.AllowAnyOrigin()
-                              .AllowAnyMethod()
-                              .AllowAnyHeader();
+                        policy.WithOrigins("http://localhost:5173") 
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
                     });
             });
             builder.WebHost.ConfigureKestrel(options =>
@@ -146,7 +146,7 @@ namespace GenerateShortUrl.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseCors("AllowAll");
+            app.UseCors("AllowFrontend");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
