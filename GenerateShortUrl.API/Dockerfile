@@ -7,7 +7,7 @@ ENV ASPNETCORE_Kestrel__Certificates__Default__Path="/https/aspnetcore-dev.pfx"
 RUN mkdir /https
 RUN chown -R app:app /https
 
-USER app
+USER root
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -28,5 +28,10 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish . 
 COPY aspnetcore-dev.pfx /https/aspnetcore-dev.pfx
-RUN chown app:app /https/aspnetcore-dev.pfx
+
+
+RUN chmod 644 /https/aspnetcore-dev.pfx
+
+USER app
+
 ENTRYPOINT ["dotnet", "GenerateShortUrl.API.dll"]
