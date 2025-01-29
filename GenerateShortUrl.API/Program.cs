@@ -17,6 +17,17 @@ namespace GenerateShortUrl.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader();
+                    });
+            });
             builder.WebHost.ConfigureKestrel(options =>
             {
                 options.ConfigureHttpsDefaults(httpsOptions =>
@@ -135,7 +146,7 @@ namespace GenerateShortUrl.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
